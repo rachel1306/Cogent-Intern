@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542771562865",
+    "project_id": "cogentecomm",
+    "storage_bucket": "cogentecomm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542771562865:android:9ac1b8bcb12f4b52394ed0",
+        "android_client_info": {
+          "package_name": "com.example.cogent_ecomm_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542771562865-lc24tka4kosp10bn52qi9bmrq78bl4be.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq0kxlWyaCZlX6W0QA-Ek70_m8swqa3Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542771562865-lc24tka4kosp10bn52qi9bmrq78bl4be.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
