@@ -99,12 +99,6 @@ class _signUpState extends State<signUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
-          child: AppBar(
-            title: Text('app name'),
-          ),
-      ),*/
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

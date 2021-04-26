@@ -1,5 +1,6 @@
+import 'package:cogent_ecomm_app/InsideApp/slideIn.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cogent_ecomm_app/InsideApp/slideIn.dart';
 class home extends StatefulWidget {
   @override
   _homeState createState() => _homeState();
@@ -110,7 +111,9 @@ class _homeState extends State<home> {
           ),
         ],
       ),
-      drawer: ,
+      drawer: Drawer(
+        child: slideIn(),
+      ),
     );
   }
 }
