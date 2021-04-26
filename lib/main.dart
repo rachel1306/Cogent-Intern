@@ -1,10 +1,21 @@
+import 'package:cogent_ecomm_app/SignUp.dart';
 import 'package:flutter/material.dart';
-import 'package:cogent_ecomm_app/HomeScreen.dart';
+import 'package:cogent_ecomm_app/welcomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cogent_ecomm_app/SignIn.dart';
+import 'package:cogent_ecomm_app/InsideApp/InnerHome.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: MyApp(),
+    routes: {
+      '/welcome': (context) => homeScreen(),
+      '/signIn': (context) => signIn(),
+      '/signup': (context) => signUp(),
+      '/home': (context) => home(),
+    },
+    debugShowCheckedModeBanner: false,));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +27,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }

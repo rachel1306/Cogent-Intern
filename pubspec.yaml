@@ -35,6 +35,7 @@ dependencies:
   cloud_firestore: ^1.0.6
   http: ^0.13.1
   flutter_signin_button: ^2.0.0
+  email_auth: ^0.0.1+3
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +56,7 @@ flutter:
     - assets/fb_logo.png
     - assets/twitter_logo.png
     - assets/google_logo.png
+    - assets/firstScreen.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

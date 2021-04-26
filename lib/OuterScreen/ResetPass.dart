@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:email_auth/email_auth.dart';
 import 'package:cogent_ecomm_app/OuterScreen/verification.dart';
 class resetPassword extends StatefulWidget {
   @override
@@ -9,6 +10,14 @@ class resetPassword extends StatefulWidget {
 class _resetPasswordState extends State<resetPassword> {
   final _email=TextEditingController();
   FirebaseAuth _auth=FirebaseAuth.instance;
+  String _error;
+
+  void sendOTP() async{
+    EmailAuth.sessionName="Test Session";
+    var res=await EmailAuth.sendOtp(receiverMail: _email.text);
+    if(res) print("OTP sent");
+    else print("Error");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +44,11 @@ class _resetPasswordState extends State<resetPassword> {
             child: TextField(
             controller: _email,
               decoration: InputDecoration(
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
                 hintText: 'Email',
+                errorText: _error,
               ),
             ),
           ),
@@ -64,9 +77,15 @@ class _resetPasswordState extends State<resetPassword> {
                 ],
               ),
               child: TextButton(
-                onPressed: (){
-                  _auth.sendPasswordResetEmail(email: _email.text);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Verification()));
+                onPressed: () {
+                  sendOTP();
+                  if (_email.text == null)
+                    _error = "Enter a valid email";
+                  else {
+                    _error = null;
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Verification(_email.text)));
+                  }
                 },
                 child: Text('Reset Password',
                   style: TextStyle(

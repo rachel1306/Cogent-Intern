@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cogent_ecomm_app/SignIn.dart';
 import 'package:cogent_ecomm_app/SignUp.dart';
 class homeScreen extends StatefulWidget {
   @override
@@ -75,7 +76,9 @@ class _homeScreenState extends State<homeScreen> {
                               borderRadius: BorderRadius.circular(25)
                           ),
                           child: TextButton(
-                            onPressed: null,
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => signIn()));
+                            },
                             child: Text('SignIn',
                               style: TextStyle(
                                 fontSize: 20,

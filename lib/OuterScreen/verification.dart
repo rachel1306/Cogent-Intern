@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:email_auth/email_auth.dart';
 class Verification extends StatefulWidget {
+  final String _email;
+  const Verification(this._email);
   @override
   _VerificationState createState() => _VerificationState();
 }
 
 class _VerificationState extends State<Verification> {
-  final _email=TextEditingController();
+  final _otp=TextEditingController();
+
+  void verifyOTP() async{
+    var res=await EmailAuth.validate(receiverMail: widget._email, userOTP: _otp.text);
+    if(res){
+      _auth.sendPasswordResetEmail(email: widget._email);
+      Navigator.popUntil(context, ModalRoute.withName('/signIn'));
+      print("otp verified");
+    }
+    else print("Not verified");
+  }
   FirebaseAuth _auth=FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -34,8 +47,12 @@ class _VerificationState extends State<Verification> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: TextField(
-              controller: _email,
+              controller: _otp,
+              cursorColor: Colors.black,
               decoration: InputDecoration(
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
             ),
           ),
@@ -64,11 +81,7 @@ class _VerificationState extends State<Verification> {
                 ],
               ),
               child: TextButton(
-                onPressed: (){
-                  Navigator.of(context).popUntil((route){
-                    return route.settings.name == 'SignIn';
-                  });
-                },
+                onPressed: () => verifyOTP(),
                 child: Text('Verify',
                   style: TextStyle(
                     fontSize: 20,
