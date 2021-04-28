@@ -10,7 +10,8 @@ import 'package:cogent_ecomm_app/SignIn/google.dart';
 import 'package:cogent_ecomm_app/SignIn/twitter.dart';
 import 'package:cogent_ecomm_app/OuterScreen/ResetPass.dart';
 import 'package:cogent_ecomm_app/InsideApp/firstScreen.dart';
-import '';
+import 'package:cogent_ecomm_app/InsideApp/bottomNavigation.dart';
+//import 'package:cogent_ecomm_app/InsideApp/SideNavbar/Settings/changePass.dart';
 class signUp extends StatefulWidget {
   @override
   _signUpState createState() => _signUpState();
@@ -26,10 +27,19 @@ class _signUpState extends State<signUp> {
   User _user;
 
   final GoogleSignIn _googleSignIn=GoogleSignIn();
+  checkAuthentication() async{
+    _auth.authStateChanges().listen((user) {
+      if(user!=null){
+        print(user);
+        //Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+      }
+    });
+  }
 
   @override
   void initState(){
     super.initState();
+    this.checkAuthentication();
   }
   register() async{
     if(_formKey.currentState.validate()) {
@@ -37,14 +47,31 @@ class _signUpState extends State<signUp> {
       try {
         UserCredential user = await _auth.createUserWithEmailAndPassword(
             email: _email.text, password: _password.text);
-        if (user != null)  Navigator.push(context, MaterialPageRoute(builder: (context) => firstSignupScreen()));
+        if (user != null)  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => firstSignupScreen()),ModalRoute.withName(''));
       }
       catch (e) {
+        showError(e.message);
         print(e);
       }
       }
   }
-
+  showError(String errormessage){
+    showDialog(context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text(errormessage),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'))
+            ],
+          );
+        }
+    );
+  }
   Future _handleFBLogin() async{
     FacebookLoginResult _result=await _fbLogin.logIn(['email']);
     switch(_result.status){
@@ -66,7 +93,7 @@ class _signUpState extends State<signUp> {
       _user=a.user;
     });
     if(isLogIn ==true ){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => bottomNav()));
     }
   }
   Future _signOutFB() async{
@@ -316,7 +343,7 @@ class _signUpState extends State<signUp> {
                           end: Alignment.centerRight,
                           colors: <Color>[
                             Color(0xffBCE0FD),
-                            Color(0xff4D53F0),
+                            Color(0xff4d53f0),
                           ]
                         ),
                         boxShadow: <BoxShadow>[
@@ -328,27 +355,30 @@ class _signUpState extends State<signUp> {
                         ],
                       ),
                       child: TextButton(
-                        onPressed: register,
-                        child: Text('SignUp',
-                          style: TextStyle(
+                        onPressed: () async{
+                          await register();
+                          //changePassword(pass: _password.text);
+                          },
+                          child: Text('SignUp',
+                            style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                             fontWeight: FontWeight.w300
                           ),),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 290,
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: GestureDetector(
-                        onTap: (){
+                SizedBox(
+                  width: 290,
+                  child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: GestureDetector(
+                    onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => resetPassword()));
-                        },
-                        child: new Text("forgot password",
+                          },
+                          child: new Text("forgot password",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                             fontSize: 15),),
                       ),
                     ),
@@ -383,7 +413,7 @@ class _signUpState extends State<signUp> {
                   ),
                     child: TextButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => signIn()));
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => signIn()),ModalRoute.withName('/'));
                       },
                       child: Text('SignIn',
                       style: TextStyle(

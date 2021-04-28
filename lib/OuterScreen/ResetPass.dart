@@ -19,6 +19,7 @@ class _resetPasswordState extends State<resetPassword> {
     if(res) {
       print("OTP sent");
       Navigator.push(context, MaterialPageRoute(builder: (context) => Verification(_email.text)));
+      //Navigator.popAndPushNamed(context, MaterialPageRoute(builder: (context) => Verification(_email.text)));
     }
     else print("Error");
   }

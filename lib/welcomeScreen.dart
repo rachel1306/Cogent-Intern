@@ -11,6 +11,16 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          color: Colors.purple[200],
+          image: DecorationImage(
+            image: AssetImage("assets/background.png"),
+            colorFilter:
+            ColorFilter.mode(Colors.black.withOpacity(0.2),
+                BlendMode.dstATop),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: SizedBox(
           height: 800,
           child: Column(
@@ -21,13 +31,14 @@ class _homeScreenState extends State<homeScreen> {
                 children: [
                   Text('Welcome',
                     style: TextStyle(
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 40),
-                    child: Text('to the best Shopping app ever!'),
+                    child: Text('to the best Shopping app ever!',style: TextStyle(color: Colors.white),),
                   ),
                 ],
               ),
@@ -72,7 +83,7 @@ class _homeScreenState extends State<homeScreen> {
                           width: 250,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Colors.grey.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(25)
                           ),
                           child: TextButton(

@@ -1,3 +1,4 @@
+import 'package:cogent_ecomm_app/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_auth/email_auth.dart';
@@ -12,13 +13,19 @@ class _VerificationState extends State<Verification> {
   final _otp=TextEditingController();
 
   void verifyOTP() async{
+    bool _verified=false;
     var res=await EmailAuth.validate(receiverMail: widget._email, userOTP: _otp.text);
+    setState(() {
+      _verified=true;
+    });
     if(res){
       _auth.sendPasswordResetEmail(email: widget._email);
-      Navigator.popUntil(context, ModalRoute.withName('/signIn'));
+      //Navigator.popUntil(context, ModalRoute.withName('/signIn'));
       print("otp verified");
     }
     else print("Not verified");
+    if(_verified == true) Navigator.push(context, MaterialPageRoute(builder: (context) => signIn()));
+      //Navigator.popUntil(context, ModalRoute.withName('/signIn'));
   }
   FirebaseAuth _auth=FirebaseAuth.instance;
   @override
@@ -81,8 +88,10 @@ class _VerificationState extends State<Verification> {
                 ],
               ),
               child: TextButton(
-                onPressed: () => verifyOTP(),
-                child: Text('Verify',
+                onPressed: () {
+                  verifyOTP();
+                  },
+                  child: Text('Verify',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,

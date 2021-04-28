@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cogent_ecomm_app/InsideApp/InnerHome.dart';
+import 'package:cogent_ecomm_app/InsideApp/bottomNavigation.dart';
 class firstSignupScreen extends StatefulWidget {
   @override
   _firstSignupScreenState createState() => _firstSignupScreenState();
@@ -57,7 +58,7 @@ class _firstSignupScreenState extends State<firstSignupScreen> {
                 ),
                 child: TextButton(
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => bottomNav()));
                   },
                   child: Text('Shop now',
                     style: TextStyle(

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cogent_ecomm_app/SignIn/facebook.dart';
 import 'package:cogent_ecomm_app/SignIn/google.dart';
 import 'package:cogent_ecomm_app/SignIn/twitter.dart';
+import 'package:cogent_ecomm_app/InsideApp/bottomNavigation.dart';
 class signIn extends StatefulWidget {
   @override
   _signInState createState() => _signInState();
@@ -40,7 +41,7 @@ class _signInState extends State<signIn> {
         //email: _email.text, password: _password.text);
         if(user!=null)
         //Navigator.of(context).pushNamedAndRemoveUntil('/welcome',(Route<dynamic> route) => false);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => bottomNav()),ModalRoute.withName(''),);
         return 'Signed In';
         //User user=result.user;
       }
