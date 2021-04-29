@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cogent_ecomm_app/InsideApp/Categories/fruits.dart';
 class categories extends StatefulWidget {
   @override
   _categoriesState createState() => _categoriesState();
@@ -24,9 +25,8 @@ class _categoriesState extends State<categories> {
             return ListView(
               children: snapshot.data.docs.map((document) {
                 return Container(
-                  child: PageView(
+                  child: Row(
                     children: [
-                      if
                     ],
                   ),
                 );

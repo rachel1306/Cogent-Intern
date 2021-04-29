@@ -1,4 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:cogent_ecomm_app/InsideApp/Categories/fruits.dart';
 import 'package:cogent_ecomm_app/InsideApp/slideIn.dart';
 import 'package:flutter/material.dart';
 import 'package:cogent_ecomm_app/InsideApp/bottomNavigation.dart';
@@ -6,6 +7,9 @@ import 'package:getwidget/getwidget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cogent_ecomm_app/InsideApp/categories.dart';
+import 'package:cogent_ecomm_app/InsideApp/Categories/devices.dart';
+import 'package:cogent_ecomm_app/InsideApp/Categories/shoes.dart';
+import 'package:cogent_ecomm_app/InsideApp/Categories/toys.dart';
 
 int _currentIndex = 0;
 class home extends StatefulWidget {
@@ -139,7 +143,7 @@ class _homeState extends State<home> {
                         children: [
                           SizedBox(
                             height: 200,
-
+                            width: MediaQuery.of(context).size.width * 0.3,
                             child: Carousel(
                               dotSize: 4,
                               dotIncreasedColor: Color(0xff4D53F0),
@@ -210,8 +214,210 @@ class _homeState extends State<home> {
                 ),
               ),
                 SizedBox(
-                  height: 100,
-                    child: categories()
+                  height: 250,
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    removeBottom: true,
+                    //removeBottom: true,
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        SizedBox(
+                        //height: 100,
+                          child: Row(
+                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => fruits()));
+                                },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: <Widget>[
+                                    Image.asset('assets/Categories/box1.png'),
+                                    Positioned(
+                                        top: 0,
+                                        right: 40,
+                                        child: Image.asset('assets/Categories/fruits.png')
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 5),
+                                          child: Text('Fruits',style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Colors.white
+                                          ),),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 12),
+                                          child: SizedBox(
+                                              width: 100,
+                                              child: Text("Fresh fruits and vegetables available",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Colors.white),
+                                              )
+                                          ),
+                                        ),
+                                        Text('40',style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white
+                                        ),),
+                                        Text('items',style: TextStyle(color: Colors.white),),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => shoes()));
+                                },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: <Widget>[
+                                  Image.asset('assets/Categories/box2.png'),
+                                  Positioned(
+                                      top: -8,
+                                      right: 40,
+                                      child: Image.asset('assets/Categories/shoes.png')
+                                  ),
+                                  Column(
+                                    //crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 5),
+                                        child: Text('Shoes',style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Colors.white
+                                        ),),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 12),
+                                        child: SizedBox(
+                                            width: 100,
+                                            child: Text("Branded shoes and flips available",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(color: Colors.white),
+                                            )
+                                        ),
+                                      ),
+                                      Text('400',style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white
+                                      ),),
+                                      Text('items',style: TextStyle(color: Colors.white),)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              ),
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => devices()));
+                                },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: <Widget>[
+                                    Image.asset('assets/Categories/box3.png'),
+                                    Positioned(
+                                        top: 0,
+                                        right: 40,
+                                        child: Image.asset('assets/Categories/device.png')
+                                    ),
+                                    Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 80,
+                                            child: Text('Electronic appliances',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                              ),)
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 8),
+                                          child: SizedBox(
+                                              width: 100,
+                                              child: Text("Laptops. mobile phones & more...",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Colors.white),
+                                              )
+                                          ),
+                                        ),
+                                        Text('1500',style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          color: Colors.white
+                                        ),),
+                                        Text('items',style: TextStyle(color: Colors.white),)
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => toys()));
+                                },
+                                //style: ElevatedButton.styleFrom(c),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: <Widget>[
+                                    Image.asset('assets/Categories/box1.png'),
+                                    /*Positioned(
+                                        top: 0,
+                                        right: 40,
+                                        child: SizedBox(
+                                          width: 100,
+                                            child: Image.asset('assets/Categories/toys.png',),
+                                        ),
+                                    ),*/
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text('Toys',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Colors.white
+                                          ),),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 15),
+                                          child: SizedBox(
+                                              width: 100,
+                                              child: Text("Toys for all age groups available",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Colors.white),
+                                              )
+                                          ),
+                                        ),
+                                        Text('100',style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          color: Colors.white
+                                        ),),
+                                        Text('items',style: TextStyle(color: Colors.white),)
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                            ),
+                      ),
+                      ],
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),

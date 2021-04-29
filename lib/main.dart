@@ -1,6 +1,7 @@
 import 'package:cogent_ecomm_app/OuterScreen/verification.dart';
 import 'package:cogent_ecomm_app/SignUp.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 import 'package:cogent_ecomm_app/welcomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cogent_ecomm_app/SignIn.dart';
@@ -10,6 +11,7 @@ import 'package:cogent_ecomm_app/OuterScreen/ResetPass.dart';
 import 'package:cogent_ecomm_app/InsideApp/SideNavbar/settings.dart';
 //import 'package:cogent_ecomm_app/InsideApp/SideNavbar/notification.dart';
 void main() async{
+  globals.discountList;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MaterialApp(

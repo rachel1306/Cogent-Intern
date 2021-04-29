@@ -10,10 +10,8 @@ class _firstSignupScreenState extends State<firstSignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Align(
-        alignment: Alignment.center,
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
@@ -25,7 +23,7 @@ class _firstSignupScreenState extends State<firstSignupScreen> {
                 width: 300,
                 child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt '
                     'ut labore et dolore magna aliqua. ',
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: 17,
                   ),

@@ -29,7 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.0.4
   firebase_auth: ^1.1.1
-  provider: ^3.1.0
+  provider: ^5.0.0
   flutter_facebook_login: ^3.0.0
   google_sign_in: ^5.0.2
   cloud_firestore: ^1.0.7
@@ -61,6 +61,9 @@ flutter:
     - assets/twitter_logo.png
     - assets/google_logo.png
     - assets/firstScreen.png
+    - assets/notification.png
+    - assets/more.png
+    - assets/tab_saved.png
     - assets/slideIn/home.png
     - assets/slideIn/explore.png
     - assets/slideIn/wallet.png
@@ -69,14 +72,19 @@ flutter:
     - assets/bottomNav/profile.png
     - assets/bottomNav/bars.png
     - assets/bottomNav/myOrders.png
-    - assets/notification.png
-    - assets/more.png
     - assets/carousel1.png
     - assets/Carousel2.png
     - assets/Feedback/happy.png
     - assets/Feedback/average.png
     - assets/Feedback/sad.png
     - assets/background.png
+    - assets/Categories/box1.png
+    - assets/Categories/box2.png
+    - assets/Categories/box3.png
+    - assets/Categories/fruits.png
+    - assets/Categories/shoes.png
+    - assets/Categories/device.png
+    - assets/Categories/toys.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
